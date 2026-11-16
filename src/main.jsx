@@ -633,52 +633,33 @@ function App() {
             <p className="gallery-message">Loading the gallery…</p>
           ) : visibleGallery.length ? (
             <div className="gallery-grid">
-              {visibleGallery.map((item, index) => (
-                <article
-                  className={`gallery-card gallery-card-${index % 4}`}
-                  key={item.id}
-                >
-                  <div className="gallery-media">
-                    {item.media_type === "video" ? (
-                      <video controls preload="metadata">
-                        <source src={item.public_url} />
-                      </video>
-                    ) : (
-                      <img
-                        src={item.public_url}
-                        alt={item.title}
-                        loading="lazy"
-                      />
-                    )}
+  {visibleGallery.map((item, index) => (
+    <article
+      className={`gallery-card gallery-card-${index % 4}`}
+      key={item.id}
+    >
+      <div className="gallery-media">
+        {item.media_type === "video" ? (
+          <video controls preload="metadata">
+            <source src={item.public_url} />
+          </video>
+        ) : (
+          <img
+            src={item.public_url}
+            alt={item.title}
+            loading="lazy"
+          />
+        )}
 
-                    {item.media_type === "video" && (
-                      <span className="video-label">
-                        <Play size={12} /> VIDEO
-                      </span>
-                    )}
-                  </div>
-                  <div className="gallery-media">
-  {item.media_type === "video" ? (
-    <video controls preload="metadata">
-      <source src={item.public_url} />
-    </video>
-  ) : (
-    <img
-      src={item.public_url}
-      alt=""
-      loading="lazy"
-    />
-  )}
-
-  {item.media_type === "video" && (
-    <span className="video-label">
-      <Play size={12} /> VIDEO
-    </span>
-  )}
+        {item.media_type === "video" && (
+          <span className="video-label">
+            <Play size={12} /> VIDEO
+          </span>
+        )}
+      </div>
+    </article>
+  ))}
 </div>
-                </article>
-              ))}
-            </div>
           ) : (
             <div className="empty-gallery">
               <Camera size={28} />
