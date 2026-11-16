@@ -218,9 +218,9 @@ function App() {
     item => item.media_type !== "video"
   );
 
-  const workGallery = gallery.filter(
-    item => item.experience_id !== HERO_MEDIA_ID
-  );
+ const workGallery = gallery.filter(
+  item => !item.experience_id
+);
 
   async function signIn(event) {
     event.preventDefault();
